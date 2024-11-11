@@ -1,0 +1,789 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f6e8e4;
+  color: #54483c;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #3e3027f1;
+}
+
+a {
+  text-decoration: none;
+  color: #8d6e63;
+}
+
+a:hover {
+  color: #d2a679;
+}
+
+.header {
+  background: linear-gradient(135deg, #b59385, #8d6e63);
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 50px;
+  height: 3px;
+  background-color: #4d393183;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-description{
+  color:#2c2c2c;
+}
+
+.order-form .invalid-feedback {
+  display: none;
+  color: red;
+}
+
+.order-form .is-invalid + .invalid-feedback {
+  display: block;
+}
+
+/* Стиль для кнопок */
+.btn-primary {
+  background-color: #7b5649;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #b59385;
+}
+
+.btn-secondary {
+  background-color: #b59385;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #8d6e63;
+}
+
+
+.gallery-section img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: grab;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.05); /* Увеличение картинки */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Добавление тени */
+}
+
+
+/* Динамика для картинок в галерее */
+.gallery-section img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: grab;
+}
+
+.gallery-section img:hover {
+  transform: scale(1.05); /* Увеличение картинки */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Добавление тени */
+}
+
+/* Динамика для отзывов */
+.reviews-section .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reviews-section .card:hover {
+  transform: translateY(-10px); /* Сдвиг отзыва вверх */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Добавление тени */
+}
+
+/* Динамика для элементов каталога */
+.catalog-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+
+.catalog-item:hover {
+  transform: translateY(-10px); /* Сдвиг вверх */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Добавление тени */
+}
+
+.card-text {
+  color:rgba(0, 0, 0, 0.5);
+}
+
+.faq-answer{
+  color:rgba(0, 0, 0, 0.864)
+}
+
+/* Стиль для модального окна */
+.modal { 
+  display: none; 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.714); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}
+
+.modal-content {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+/* Анимация для модального окна */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Зона для перетаскивания изображений */
+.drag-and-drop-area {
+  border: 2px dashed #8d6e63;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.drop-area {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6e8e4;
+}
+
+/* Рейтинг звездочек */
+.rating {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.rating .star {
+  font-size: 24px;
+  color: #d2a679;
+  transition: color 0.3s;
+}
+
+.rating .star:hover,
+.rating .star:hover ~ .star,
+.rating .star.selected {
+  color: #b59385;
+}
+
+/* Стили для кнопок в футере */
+.footer .footer-link {
+  color: #d2a679;
+}
+
+.footer .footer-link:hover {
+  color: #b59385;
+}
+.offer-container {
+  background: linear-gradient(45deg, #ff9800, #ff5722);
+  color: white;
+  text-align: center;
+  padding: 30px;
+  border-radius: 8px;
+  margin: 20px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.offer-content h2 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.offer-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.offer-container .btn-warning {
+  background-color: #ffcc00;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.offer-container .btn-warning:hover {
+  background-color: #ffb300;
+}
+
+/* логика для темной темы */
+.dark-mode {
+  background-color: #2c2c2c;
+  color: #f6f6f6;
+}
+
+.dark-mode .header {
+  background: linear-gradient(135deg, #4f4f4f, #2c2c2c);
+}
+
+.dark-mode a {
+  color: #d2a679;
+}
+
+.dark-mode a:hover {
+  color: #ffcc80;
+}
+
+.dark-mode .btn-secondary {
+  background-color: #555555;
+}
+
+.dark-mode .btn-primary {
+  background-color: #333333;
+}
+
+.dark-mode .section-title::after {
+  background-color:#b59385;
+}
+
+
+.dark-mode .about-section, 
+.dark-mode .gallery-section, 
+.dark-mode .order-section {
+  background-color: #3c3c3c; /* Общий фон */
+  color: #f6f6f6; /* Светлый текст */
+}
+
+/* Для всех вложенных div, form и элементов внутри секций */
+.dark-mode .about-section * {
+  background-color: inherit;
+  color: inherit;
+}
+
+.dark-mode .gallery-section * {
+  background-color: inherit;
+  color: inherit;
+}
+
+.dark-mode .order-section * {
+  background-color: inherit;
+  color: inherit;
+}
+
+
+.dark-mode .order-form {
+  background-color: inherit; 
+}
+
+.dark-mode .about-section {
+  background-color: #3c3c3c !important; 
+  color: #f6f6f6 !important; 
+}
+
+
+.dark-mode .gallery-section {
+  background-color: #3c3c3c !important; 
+  color: #f6f6f6 !important; 
+}
+
+.dark-mode .order-section {
+  background-color: #3c3c3c !important; /* Темный фон */
+  color: #f6f6f6 !important; /* Светлый текст */
+}
+
+.dark-mode .about-section *,
+.dark-mode .gallery-section *,
+.dark-mode .order-section * {
+  background-color: inherit !important; /* Наследуем фон */
+  color: inherit !important; /* Наследуем текст */
+}
+
+/* Специальное правило для формы */
+.dark-mode .order-form input,
+.dark-mode .order-form textarea,
+.dark-mode .order-form select {
+  background-color: #5a5a5a !important; /* Темный фон */
+  color: #f6f6f6 !important; /* Светлый текст */
+  border: 1px solid #7a7a7a !important; /* Граница */
+}
+
+.dark-mode .order-form input::placeholder,
+.dark-mode .order-form textarea::placeholder {
+  color: #b5b5b5 !important; /* Светлый текст заполнителя */
+}
+
+/* Стили кнопок */
+.dark-mode .order-form .btn-primary {
+  background-color: #4a4a4a !important; /* Темная кнопка */
+  color: #f6f6f6 !important;
+}
+
+.dark-mode .order-form .btn-primary:hover {
+  background-color: #6a6a6a !important;
+}
+
+.dark-mode .text-whitte{
+  color:#f6e8e4;
+}
+
+
+/* Стили для ссылок навбара в темной теме */
+.dark-mode .navbar-nav .nav-link {
+  color: #f6f6f67d; /* Белый текст для темной темы */
+  transition: color 0.3s ease;
+}
+
+.dark-mode .navbar-nav .nav-link:hover {
+  color: #ff9800; /* Оранжевая подсветка при наведении */
+  text-shadow: 0 0 8px rgba(255, 152, 0, 0.5); /* Легкое свечение */
+}
+
+.dark-mode .card-body{
+  background-color:rgba(43, 41, 41, 0.612);
+}
+
+.dark-mode .card-text,
+.blockquote-footer{
+  color:#ece7e7;
+}
+
+.dark-mode .accordion * {
+  background-color: #5a5a5a;
+}
+
+.dark-mode .ratebg{
+  background-color: #5a5a5a;
+}
+
+.dark-mode .register-container,
+.dark-mode .login-container {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode .register-container input,
+.dark-mode .login-container input {
+    background-color: #444;
+    color: #fff;
+    border-color: #555;
+}
+
+.dark-mode .register-container input::placeholder,
+.dark-mode .login-container input::placeholder {
+    color: #bbb;
+}
+
+.dark-mode .btn-primary {
+    background-color: #555;
+    color: #fff;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #777;
+}
+
+
+
+.rate-us-section {
+  display: flex;
+  justify-content: center; /* Горизонтальное центрирование */
+  align-items: center; /* Вертикальное центрирование */
+  flex-direction: column; /* Расположить элементы вертикально */
+  min-height: 100px; /* Опционально: задать минимальную высоту */
+}
+
+
+/* Анимация для звезд в модальном окне */
+.modal-star {
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-star:hover {
+  transform: scale(1.2);
+  color: orange;
+}
+
+.modal-star.selected {
+  color: gold;
+  transform: scale(1.2);
+}
+
+/* Убираем интерактивность у звезд в Reviews */
+.reviews-section .star {
+  color: gold;
+  font-size: 24px;
+  pointer-events: none;
+  transition: none;
+}
+
+/* Скрываем модальное окно по умолчанию */
+.modal {
+  display: none; /* Убедитесь, что окно скрыто изначально */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.8);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+
+
+
+
+/* Стили для полей с ошибками */
+.is-invalid {
+  border-color: #dc3545; /* Красная граница для ошибки */
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5); /* Легкая подсветка */
+}
+
+/* Стили для сообщений об ошибке */
+.invalid-feedback {
+  display: none;
+  color: #dc3545; /* Красный цвет для текста */
+  font-size: 14px; /* Уменьшенный размер текста */
+  margin-top: 5px;
+}
+
+/* Показать сообщение об ошибке, если поле не валидно */
+.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+/* Стили для полей при успешной валидации */
+.is-valid {
+  border-color: #28a745; /* Зеленая граница для успешной валидации */
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5); /* Легкая подсветка */
+}
+
+/* Анимация для плавного появления сообщения */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Применение анимации для сообщений об ошибках */
+.invalid-feedback {
+  animation: fadeIn 0.3s ease-in-out;
+}
+.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 5px rgba(220, 53, 69, 0.5);
+}
+
+.invalid-feedback {
+  display: none;
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+
+/* Общие стили для кнопок */
+button, .btn {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Анимация при наведении */
+button:hover, .btn:hover {
+  transform: scale(1.1); /* Увеличение размера */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Лёгкая тень */
+}
+
+/* Анимация при клике */
+button:active, .btn:active {
+  transform: scale(0.95); /* Уменьшение размера */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Уменьшенная тень */
+}
+
+/* Для стилизации валидации */
+form.was-validated .form-control:invalid {
+  border-color: red;
+}
+
+form.was-validated .form-control:valid {
+  border-color: green;
+}
+
+/* Прогресс-бар контейнер */
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #f3f3f3;
+  margin-top: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Прозрачный по умолчанию */
+  transition: opacity 0.5s ease-in-out; /* Плавное появление */
+}
+
+/* Полоса прогресса */
+.progress-bar .progress {
+  width: 0%;
+  height: 100%;
+  background-color: rgba(33, 131, 33, 0.642);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.5s ease; /* Плавное заполнение */
+}
+
+/* Текст внутри прогресс-бара */
+.progress-bar .progress-text {
+  z-index: 2;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  position: absolute;
+}
+
+/* Центрирование и уменьшение размера формы регистрации */
+.register-container {
+  max-width: 400px; /* Ограничение ширины */
+  margin: 0 auto; /* Центрирование */
+  padding: 20px; /* Внутренние отступы */
+  background-color: #fef6f2; /* Нежный фон */
+  border-radius: 8px; /* Закругленные углы */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Стили заголовка */
+.register-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Поля ввода */
+.register-container .form-control {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Кнопка регистрации */
+.register-container .btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #a57c6d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.register-container .btn-primary:hover {
+  background-color: #7c5e54;
+}
+
+/* Ссылка */
+.register-container a {
+  font-size: 14px;
+  color: #7c5e54;
+  text-decoration: none;
+}
+
+.register-container a:hover {
+  text-decoration: underline;
+}
+
+/* Центрирование и уменьшение размера формы входа */
+.login-container {
+  max-width: 400px; /* Ограничение ширины */
+  margin: 0 auto; /* Центрирование */
+  padding: 20px; /* Внутренние отступы */
+  background-color: #fef6f2; /* Нежный фон */
+  border-radius: 8px; /* Закругленные углы */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+/* Стили заголовка */
+.login-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Поля ввода */
+.login-container .form-control {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Кнопка входа */
+.login-container .btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #a57c6d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.login-container .btn-primary:hover {
+  background-color: #7c5e54;
+}
+
+/* Ссылка */
+.login-container a {
+  font-size: 14px;
+  color: #7c5e54;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+/* Общие стили для компактных модальных окон */
+.modal {
+  display: none; /* Скрываем по умолчанию */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Поверх всех элементов */
+}
+
+/* Контент внутри модального окна */
+.modal-content {
+  max-width: 400px; /* Ограничение ширины */
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Закрывающая кнопка */
+.modal-content .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
+}
+
+/* Стили для кнопок внутри модальных окон */
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #a57c6d;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #7c5e54;
+}
+
+/* Стили полей в подписке */
+.modal-content .form-control {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+}
