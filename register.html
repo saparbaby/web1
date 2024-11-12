@@ -38,73 +38,84 @@
   </main>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const registerButton = document.getElementById("registerSubmit");
-  
-      if (registerButton) {
-        registerButton.addEventListener("click", function (event) {
-          event.preventDefault();
-  
-          // Получаем значения полей
-          const username = document.getElementById("username").value.trim();
-          const email = document.getElementById("email").value.trim();
-          const password = document.getElementById("password").value.trim();
-  
-          // Валидация полей
-          let isValid = true;
-  
-          // Валидация имени пользователя
-          if (username.length < 3) {
-            isValid = false;
-            showValidationError("username", "Username must be at least 3 characters long.");
-          } else {
-            hideValidationError("username");
-          }
-  
-          // Валидация email
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          if (!emailRegex.test(email)) {
-            isValid = false;
-            showValidationError("email", "Please enter a valid email address.");
-          } else {
-            hideValidationError("email");
-          }
-  
-          // Валидация пароля
-          const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
-          if (!passwordRegex.test(password)) {
-            isValid = false;
-            showValidationError("password", "Password must be at least 8 characters and include a number and a symbol.");
-          } else {
-            hideValidationError("password");
-          }
-  
-          // Если все проверки пройдены, сохраняем данные и перенаправляем
-          if (isValid) {
-            const users = JSON.parse(localStorage.getItem("users")) || [];
-            users.push({ username, email, password });
-            localStorage.setItem("users", JSON.stringify(users));
-  
-            alert("Registration successful! Redirecting to Log In page.");
-            window.location.href = "login.html";
-          }
-        });
-  
-        function showValidationError(fieldId, message) {
-          const field = document.getElementById(fieldId);
-          field.classList.add("is-invalid");
-          field.nextElementSibling.textContent = message;
+        const registerButton = document.getElementById("registerSubmit");
+
+        if (registerButton) {
+            registerButton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                const username = document.getElementById("username").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value.trim();
+
+                let isValid = true;
+
+                // Валидация имени пользователя
+                if (username.length < 3) {
+                    isValid = false;
+                    showValidationError("username", "Username must be at least 3 characters long.");
+                } else {
+                    hideValidationError("username");
+                }
+
+                // Валидация email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    isValid = false;
+                    showValidationError("email", "Please enter a valid email address.");
+                } else {
+                    hideValidationError("email");
+                }
+
+                // Валидация пароля
+                const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+                if (!passwordRegex.test(password)) {
+                    isValid = false;
+                    showValidationError("password", "Password must be at least 8 characters and include a number and a symbol.");
+                } else {
+                    hideValidationError("password");
+                }
+
+                if (isValid) {
+                    const users = JSON.parse(localStorage.getItem("users")) || {};
+
+                    // Проверка, существует ли пользователь
+                    if (users[email]) {
+                        alert("User with this email is already registered.");
+                        return;
+                    }
+
+                    // Регистрация нового пользователя
+                    users[email] = {
+                        username,
+                        password,
+                        theme: "light", // Тема по умолчанию
+                        filter: "all",  // Фильтр по умолчанию
+                        rate: 0         // Оценка по умолчанию
+                    };
+                    localStorage.setItem("users", JSON.stringify(users));
+
+                    alert("Registration successful! Redirecting to Log In page.");
+                    window.location.href = "login.html";
+                }
+            });
+
+            function showValidationError(fieldId, message) {
+                const field = document.getElementById(fieldId);
+                field.classList.add("is-invalid");
+                field.nextElementSibling.textContent = message;
+            }
+
+            function hideValidationError(fieldId) {
+                const field = document.getElementById(fieldId);
+                field.classList.remove("is-invalid");
+            }
         }
-  
-        function hideValidationError(fieldId) {
-          const field = document.getElementById(fieldId);
-          field.classList.remove("is-invalid");
-        }
-      }
-    });
-    document.addEventListener("DOMContentLoaded", () => {
+
+        // Применение сохранённой темы
         const savedTheme = localStorage.getItem("theme") || "light";
         document.body.classList.toggle("dark-mode", savedTheme === "dark");
     });
-  </script>  
+</script>
 </body>
 </html>
