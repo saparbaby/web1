@@ -412,6 +412,41 @@ a:hover {
     background-color: #777;
 }
 
+.dark-mode .progress-bar {
+  width: 100%;
+  height: 40px;
+  background: #2e2e2e;
+  border: 2px solid #444;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+}
+
+.dark-mode .progress-bar .progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  box-shadow: 0 0 10px rgba(0, 114, 255, 0.7), 0 0 20px rgba(0, 198, 255, 0.6);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: width 0.5s ease;
+}
+
+.dark-mode .progress-bar .progress-text {
+  z-index: 2;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: absolute;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
 
 
 .rate-us-section {
@@ -587,22 +622,20 @@ form.was-validated .form-control:valid {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0; /* Прозрачный по умолчанию */
-  transition: opacity 0.5s ease-in-out; /* Плавное появление */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.5s ease-in-out; /* Smooth fade-in/out */
 }
 
-/* Полоса прогресса */
 .progress-bar .progress {
-  width: 0%;
+  width: 0%; /* Initially zero width */
   height: 100%;
   background-color: rgba(33, 131, 33, 0.642);
   position: absolute;
   left: 0;
   top: 0;
-  transition: width 0.5s ease; /* Плавное заполнение */
+  transition: width 0.5s ease; /* Smooth filling */
 }
 
-/* Текст внутри прогресс-бара */
 .progress-bar .progress-text {
   z-index: 2;
   color: white;
@@ -786,4 +819,165 @@ form.was-validated .form-control:valid {
   padding: 10px;
   border: 1px solid #dcdcdc;
   border-radius: 4px;
+}
+
+
+/* Общий стиль контейнера с именем пользователя */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Отступ между элементами */
+}
+
+/* Стили для имени пользователя */
+.username-display {
+  font-size: 18px; /* Увеличенный размер текста */
+  font-weight: 500; /* Полужирный текст */
+  color: #fff; /* Белый текст */
+  background-color: #6c757d; /* Нейтральный серый фон */
+  padding: 10px 20px; /* Внутренние отступы */
+  border-radius: 50px; /* Полностью округлённые края */
+  text-align: center; /* Текст по центру */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Лёгкая тень */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover-эффект для имени пользователя */
+.username-display:hover {
+  background-color: #5a6268; /* Более тёмный фон при наведении */
+  transform: scale(1.05); /* Лёгкое увеличение */
+}
+
+/* Кнопка выхода */
+#logoutBtn {
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  background-color: #7c5e54; /* Красный цвет */
+  color: #fff; /* Белый текст */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover-эффект для кнопки */
+#logoutBtn:hover {
+  background-color: #7c5e54; /* Более тёмный красный цвет */
+}
+
+.d-none {
+  display: none !important;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-container label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.filter-container .form-control {
+  width: 200px;
+}
+
+
+.music-section {
+  padding: 20px;
+  text-align: center;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.music-section.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.music-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.music-item {
+  width: 200px;
+  text-align: center;
+}
+
+.music-item img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.music-item img:hover {
+  transform: scale(1.1);
+}
+
+.music-item a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #0072ff;
+  font-weight: bold;
+}
+
+.music-item a:hover {
+  text-decoration: underline;
+}
+.modal-content {
+  background-color: #fff;
+  color: #000; /* Цвет текста чёрный */
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: left;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.modal-content {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  text-align: left;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.modal-content .form-control {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.modal-content .btn-primary {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-content .btn-primary:hover {
+  background-color: #0056b3;
 }
