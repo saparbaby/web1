@@ -31,10 +31,33 @@
     </div>
   </main>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", function () {
+        const loginButton = document.querySelector("button[type='submit']");
+
+        if (loginButton) {
+            loginButton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                const email = document.querySelector("input[placeholder='Username or Email']").value.trim();
+                const password = document.querySelector("input[placeholder='Password']").value.trim();
+
+                const users = JSON.parse(localStorage.getItem("users")) || {};
+                if (!users[email] || users[email].password !== password) {
+                    alert("Invalid email or password.");
+                    return;
+                }
+
+                // Сохраняем текущего пользователя
+                localStorage.setItem("currentUser", email);
+                alert("Login successful! Redirecting to profile.");
+                window.location.href = "index.html";
+            });
+        }
+
+        // Применение сохранённой темы
         const savedTheme = localStorage.getItem("theme") || "light";
         document.body.classList.toggle("dark-mode", savedTheme === "dark");
     });
-  </script>
+</script>
 </body>
 </html>
